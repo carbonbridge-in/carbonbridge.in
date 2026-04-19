@@ -5,8 +5,8 @@ export default async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   // Public routes — no auth needed
-  const publicPaths = ['/login', '/api/auth/login', '/api/auth/change-password', '/_next', '/favicon.ico'];
-  if (publicPaths.some(p => pathname.startsWith(p))) return NextResponse.next();
+  const publicPaths = ['/', '/landing.html', '/login', '/api/auth/login', '/api/auth/change-password', '/_next', '/favicon.ico'];
+  if (publicPaths.some(p => pathname === p || pathname.startsWith(p) && p !== '/')) return NextResponse.next();
 
   const session = await getSessionFromRequest(req);
 
