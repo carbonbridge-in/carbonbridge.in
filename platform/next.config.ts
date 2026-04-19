@@ -6,6 +6,14 @@ const nextConfig = {
     ],
   },
   serverExternalPackages: ['bcryptjs'],
+  async rewrites() {
+    return [
+      {
+        source: '/',
+        destination: '/landing.html',
+      },
+    ];
+  },
 };
 
 export default nextConfig;
