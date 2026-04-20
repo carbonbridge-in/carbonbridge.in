@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 type NavLink = { href: string; icon: string; label: string; badge?: string };
 
@@ -53,7 +54,9 @@ export default function Sidebar({ role, name, email }: SidebarProps) {
       {/* Brand */}
       <div className="px-4 py-5 border-b border-gray-100">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-[#0B3D2E] flex items-center justify-center text-base">🌿</div>
+          <div className="w-10 h-10 rounded-lg bg-white shadow-sm flex items-center justify-center overflow-hidden shrink-0">
+            <Image src="/assets/logo.jpg" alt="CarbonBridge Logo" width={40} height={40} className="object-contain" priority />
+          </div>
           <div>
             <div className="font-bold text-[#0B3D2E] text-[15px] tracking-tight">CarbonBridge</div>
             <div className="text-[10px] text-gray-400 font-medium uppercase tracking-widest">MRV Platform</div>

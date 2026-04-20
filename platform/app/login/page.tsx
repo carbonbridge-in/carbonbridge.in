@@ -1,6 +1,7 @@
 'use client';
 import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -34,7 +35,9 @@ export default function LoginPage() {
       <div className="w-full max-w-md animate-fadeUp">
         {/* Logo */}
         <div className="flex items-center justify-center gap-3 mb-8">
-          <div className="w-11 h-11 rounded-xl bg-[#0B3D2E] flex items-center justify-center text-xl">🌿</div>
+          <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center overflow-hidden shrink-0">
+            <Image src="/assets/logo.jpg" alt="CarbonBridge Logo" width={48} height={48} className="object-contain" priority />
+          </div>
           <div>
             <div className="font-bold text-2xl text-[#0B3D2E] tracking-tight">CarbonBridge</div>
             <div className="text-xs text-gray-500 font-medium uppercase tracking-widest">MRV Platform · Verra / Gold Standard</div>
