@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarbonBridge | Institutional Carbon Finance for Indian Solar Assets</title>
+    <meta name="description" content="Turn your commercial and industrial solar plant into a verified carbon revenue asset. Institutional-grade MRV, compliance, and direct access to global voluntary carbon markets for Indian IPPs and EPCs.">
+    <meta name="keywords" content="carbon credits India, solar asset monetization, institutional carbon finance, IPP carbon revenue, C&I solar carbon credits, voluntary carbon market India">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Using Inter for a clean, financial data-dense aesthetic -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "CarbonBridge",
+      "url": "https://www.carbonbridge.in",
+      "logo": "https://www.carbonbridge.in/assets/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "jaywardhan.jadeja@gmail.com",
+        "contactType": "Institutional Support"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "What qualifies as an eligible solar asset?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We primarily aggregate Commercial & Industrial (C&I) solar installations, Independent Power Producers (IPPs), and utility-scale projects in India that substitute fossil-fuel-based grid electricity, thereby preventing verifiable GHG emissions."
+        }
+      }, {
+        "@type": "Question",
+        "name": "How does the verification process work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CarbonBridge connects directly to your generation data layers (SCADA/Discom). We employ automated Monitoring, Reporting, and Verification (MRV) compliant with international frameworks (e.g., Verra, Gold Standard) to ensure highest credit integrity."
+        }
+      }, {
+        "@type": "Question",
+        "name": "What are the upfront consultancy fees?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Zero. Under our institutional aggregation model, CarbonBridge absorbs capital expenditure relating to project design documents, audits, and registry fees. We align our incentives directly through a performance-based revenue share upon successful credit issuance and sale."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Who are the global buyers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our network comprises Fortune 500 corporations, compliance entities, and international trading houses executing net-zero and ESG mandates, yielding premium pricing for high-integrity Indian renewable credits."
+        }
+      }]
+    }
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            base: '#F8FAFC',
+                            slate: '#132529',     // Primary Dark (Logo Derived)
+                            teal: '#1A3338',      // Secondary Dark
+                            emerald: '#1F5C40',   // Accent Green (Logo Derived)
+                            light: '#E2E8F0',     // Borders/Subtle logic
+                            accent: '#2E8B57'     // Brighter UI accent
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.7s ease-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(15px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Modern B2B Institutional Styles */
+        body {
+            background-color: #F8FAFC;
+            color: #1A3338;
+        }
+        .grid-pattern {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(19, 37, 41, 0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(19, 37, 41, 0.04) 1px, transparent 1px);
+        }
+        .dashboard-panel {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 4px 20px rgba(19, 37, 41, 0.05);
+        }
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(90deg, #132529, #1F5C40);
+        }
+        /* Refined inputs */
+        input:focus {
+            outline: none;
+            border-color: #1F5C40 !important;
+            box-shadow: 0 0 0 3px rgba(31, 92, 64, 0.1) !important;
+        }
+        /* Mobile Sticky CTA */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #FFFFFF;
+            border-top: 1px solid #E2E8F0;
+            padding: 16px;
+            z-index: 50;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .sticky-cta {
+                display: block;
+            }
+            .main-cta {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans min-h-screen relative">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-brand-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-[88px]">
+                <!-- Logo integration -->
+                <div class="flex items-center gap-3">
+                    <!-- Update src to the actual saved image path -->
+                    <img src="assets/logo.jpg" alt="CarbonBridge Logo" class="h-14 w-auto object-contain fallback-logo" onerror="this.style.display='none'; document.getElementById('text-logo').style.display='flex';" />
+                    <div id="text-logo" class="hidden items-center gap-2">
+                        <div class="w-8 h-8 bg-brand-slate flex items-center justify-center rounded">
+                            <i class="fa-solid fa-leaf text-white text-sm"></i>
+                        </div>
+                        <span class="font-bold text-2xl text-brand-slate tracking-tight">CARBONBRIDGE</span>
+                    </div>
+                </div>
+
+                <div class="hidden md:flex gap-8 items-center text-sm font-semibold tracking-wide">
+                    <a href="#platform" class="text-gray-600 hover:text-brand-emerald transition-colors">PLATFORM</a>
+                    <a href="#calculator" class="text-gray-600 hover:text-brand-emerald transition-colors">PROJECT VALUATION</a>
+                    <a href="#compliance" class="text-gray-600 hover:text-brand-emerald transition-colors">COMPLIANCE</a>
+                    <a href="#apply" class="bg-brand-slate text-white px-6 py-3 rounded-md hover:bg-brand-emerald transition-all shadow-sm">
+                        CHECK ELIGIBILITY
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <section class="pt-40 pb-24 bg-white relative overflow-hidden border-b border-gray-200">
+        <div class="absolute inset-0 grid-pattern opacity-60"></div>
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#F0F5F2] to-transparent pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 animate-slide-up">
+            <div class="max-w-4xl">
+                <!-- Data Tag -->
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-[#EFF4F1] border border-[#D5E3DC] text-brand-emerald text-xs font-bold uppercase tracking-widest rounded mb-8">
+                    <span class="w-2 h-2 rounded-full bg-brand-emerald"></span>
+                    Now accepting C&I Solar Assets
+                </div>
+                
+                <h1 class="text-5xl md:text-6xl lg:text-[72px] font-extrabold text-brand-slate leading-[1.1] mb-8 tracking-tight">
+                    Institutional Carbon Finance for <span class="text-gradient">Indian Solar Assets.</span>
+                </h1>
+                
+                <p class="text-xl md:text-2xl text-gray-600 mb-10 max-w-3xl font-light leading-relaxed">
+                    Transform your renewable generation into verifiable market assets. We provide end-to-end MRV, registry compliance, and direct access to premium global buyers for Indian IPPs and EPCs.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-center gap-4">
+                    <a href="#apply" class="w-full sm:w-auto bg-brand-slate text-white px-8 py-4 rounded-md font-bold text-sm tracking-wide hover:bg-brand-emerald transition-all shadow-md main-cta text-center">
+                        CHECK PROJECT ELIGIBILITY
+                    </a>
+                    <a href="#calculator" class="w-full sm:w-auto bg-white text-brand-slate border border-gray-300 px-8 py-4 rounded-md font-bold text-sm tracking-wide hover:bg-gray-50 transition-all text-center">
+                        ESTIMATE CARBON REVENUE
+                    </a>
+                </div>
+                
+                <div class="mt-12 flex items-center gap-4 text-sm font-medium text-gray-500">
+                    <i class="fa-solid fa-building-shield text-brand-emerald"></i>
+                    No upfront capital expenditure required. Revenue-share model.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Trust Strip -->
+    <section class="py-12 bg-[#132529] text-white border-b border-[#1A3338]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="text-sm font-bold tracking-widest text-[#64848C] uppercase">
+                    Aligned with Global Standards
+                </div>
+                <div class="flex flex-wrap justify-center gap-10 md:gap-16 opacity-80 mix-blend-luminosity">
+                    <!-- Text placeholders assuming logos are missing; styling mimicking serious corporate logos -->
+                    <div class="font-serif font-bold text-xl tracking-tighter">VERRA / VCS</div>
+                    <div class="font-serif font-bold text-xl tracking-tighter">GOLD STANDARD</div>
+                    <div class="font-sans font-extrabold text-xl tracking-tighter flex items-center gap-1"><i class="fa-solid fa-leaf"></i> UNFCCC</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. System Architecture / How We Operate -->
+    <section id="platform" class="py-24 bg-brand-base">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16 md:flex justify-between items-end">
+                <div class="max-w-2xl">
+                    <h2 class="text-sm font-bold tracking-widest text-brand-emerald uppercase mb-3">Enterprise Workflow</h2>
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-brand-slate tracking-tight">Frictionless Generation to Monetization.</h3>
+                </div>
+                <div class="mt-6 md:mt-0 max-w-md text-gray-600">
+                    We eliminate the 18-month consulting lag. Our platform automates data ingestion, standardizes reporting, and brokers directly with tier-1 compliance buyers.
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="dashboard-panel p-8 rounded-lg">
+                    <div class="w-12 h-12 bg-[#EFF4F1] border border-[#D5E3DC] rounded text-brand-emerald flex items-center justify-center text-xl mb-6 font-mono font-bold">
+                        01
+                    </div>
+                    <h4 class="text-lg font-bold text-brand-slate mb-3">Asset Onboarding</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Submit plant technical specifications. We conduct automated eligibility screening against international methodologies (AMS-I.D) for grid-connected renewables.
+                    </p>
+                </div>
+                <!-- Step 2 -->
+                <div class="dashboard-panel p-8 rounded-lg relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-[#EFF4F1] rounded-full translate-x-16 -translate-y-16"></div>
+                    <div class="relative z-10 w-12 h-12 bg-white border border-[#D5E3DC] rounded text-brand-emerald flex items-center justify-center text-xl mb-6 font-mono font-bold">
+                        02
+                    </div>
+                    <h4 class="text-lg font-bold text-brand-slate mb-3 relative z-10">Data & MRV Engine</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed relative z-10">
+                        Generation data is ingested automatically, cryptographically hashed to prevent double-counting, and prepared for strict third-party verification (VVB).
+                    </p>
+                </div>
+                <!-- Step 3 -->
+                <div class="dashboard-panel p-8 rounded-lg">
+                    <div class="w-12 h-12 bg-brand-slate text-brand-accent rounded flex items-center justify-center text-xl mb-6 font-mono font-bold">
+                        03
+                    </div>
+                    <h4 class="text-lg font-bold text-brand-slate mb-3">Market Execution</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Verified carbon units (VCUs) are issued and immediately allocated to our global corporate buyer network, securing premium pricing and direct payout.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Calculator Section (Financial Assessment) -->
+    <section id="calculator" class="py-24 bg-[#1A3338] text-white border-y border-[#132529] relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5" style="background-image: repeating-linear-gradient(45deg, #FFF 0, #FFF 1px, transparent 0, transparent 50%); background-size: 10px 10px;"></div>
+        
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-sm font-bold tracking-widest text-brand-accent uppercase mb-3">Financial Projections</h2>
+                    <h3 class="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight">Assess Your Hidden Asset Valuation.</h3>
+                    <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                        Input your solar installation capacity. Our calculation engine utilizes conservative Indian grid emission factors and current voluntary market forwards to project your annual carbon yield.
+                    </p>
+                    
+                    <ul class="space-y-4 text-sm font-medium text-gray-300">
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-brand-accent"></i> Based on conservative capacity utilization factor (CUF)
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-brand-accent"></i> Utilizes CEA CO2 Baseline Database factors
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-brand-accent"></i> Real-time market pricing structures
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white rounded-lg p-8 shadow-2xl text-brand-slate">
+                    <div class="mb-8">
+                        <label for="capacity" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Total Capacity (Megawatts)</label>
+                        <div class="flex items-center border-b-2 border-gray-200 focus-within:border-brand-emerald transition-colors pb-2">
+                            <input type="number" id="capacity" class="w-full text-4xl font-extrabold text-brand-slate bg-transparent outline-none" placeholder="0.00" min="0.1" step="0.1">
+                            <span class="text-2xl font-bold text-gray-400">MW</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-[#F8FAFC] border border-gray-200 rounded p-6 mb-6">
+                        <div class="flex justify-between items-end mb-4 border-b border-gray-200 pb-4">
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-500 uppercase tracking-widest">Est. Annual Credits</h4>
+                                <div class="text-2xl font-bold text-brand-slate mt-1"><span id="calc-credits">0</span> VCUs</div>
+                            </div>
+                            <div class="text-right">
+                                <h4 class="text-xs font-bold text-gray-500 uppercase tracking-widest">Est. Annual Revenue Focus</h4>
+                                <div class="text-3xl font-extrabold text-[#1F5C40] mt-1">₹<span id="calc-revenue">0</span></div>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-gray-500 uppercase tracking-wide leading-relaxed">
+                            DISCLAIMER: Projections assume standard Tier-1 module degradation and historical benchmark pricing. Final issuance subject to definitive third-party audit.
+                        </p>
+                    </div>
+                    
+                    <button onclick="document.getElementById('name').focus()" class="w-full bg-brand-slate text-white py-4 rounded font-bold text-sm tracking-wide hover:bg-[#132529] transition-colors">
+                        INITIATE FORMAL AUDIT
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Credentials & Compliance -->
+    <section id="compliance" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-sm font-bold tracking-widest text-[#1F5C40] uppercase mb-3">Institutional Grade</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-[#132529] tracking-tight">Uncompromising Integrity.</h3>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">Buyers demand indisputable assurance. Our technical framework ensures perfectly compliant issuance.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200 border border-gray-200 rounded-lg overflow-hidden">
+                <div class="bg-white p-8 hover:bg-gray-50 transition-colors">
+                    <i class="fa-solid fa-shield-halved text-2xl text-[#1F5C40] mb-4"></i>
+                    <h4 class="font-bold text-gray-900 mb-2">Double-Counting Defense</h4>
+                    <p class="text-sm text-gray-600">Cryptographic project ID hashing ensures capacities are solely registered on our platform.</p>
+                </div>
+                <div class="bg-white p-8 hover:bg-gray-50 transition-colors">
+                    <i class="fa-solid fa-file-contract text-2xl text-[#1F5C40] mb-4"></i>
+                    <h4 class="font-bold text-gray-900 mb-2">Immutable Audit Trails</h4>
+                    <p class="text-sm text-gray-600">Every generation report, VVB decision, and monetary transaction is securely logged.</p>
+                </div>
+                <div class="bg-white p-8 hover:bg-gray-50 transition-colors">
+                    <i class="fa-solid fa-scale-balanced text-2xl text-[#1F5C40] mb-4"></i>
+                    <h4 class="font-bold text-gray-900 mb-2">Regulatory Alignment</h4>
+                    <p class="text-sm text-gray-600">Preparedness for shifting Indian domestic carbon market policies and international frameworks.</p>
+                </div>
+                <div class="bg-white p-8 hover:bg-gray-50 transition-colors">
+                    <i class="fa-solid fa-server text-2xl text-[#1F5C40] mb-4"></i>
+                    <h4 class="font-bold text-gray-900 mb-2">Direct SCADA Links</h4>
+                    <p class="text-sm text-gray-600">Integrating strictly with verifiable inverter APIs (Huawei, SMA) removing manual falsification risks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Intake / Lead Capture -->
+    <section id="apply" class="py-24 bg-[#F8FAFC]">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="dashboard-panel rounded-lg overflow-hidden flex flex-col md:flex-row">
+                <!-- Info pane -->
+                <div class="bg-[#132529] md:w-2/5 p-10 text-white flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-transparent to-[#1F5C40] opacity-30"></div>
+                    <div class="relative z-10">
+                        <h3 class="text-2xl font-bold mb-4">Project Submission</h3>
+                        <p class="text-sm text-gray-400 mb-8 leading-relaxed">
+                            Submit your fundamental project data for an initial feasibility review. We respond to all C&I submissions within 48 business hours with an expected issuance timeline.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3 text-sm">
+                                <i class="fa-solid fa-chart-line text-[#2E8B57]"></i> Free Initial Valuation
+                            </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <i class="fa-solid fa-file-invoice text-[#2E8B57]"></i> Zero Upfront Capital
+                            </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <i class="fa-solid fa-handshake text-[#2E8B57]"></i> Guaranteed Buyer Matching
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Form Pane -->
+                <div class="md:w-3/5 p-10">
+                    <h3 class="text-xl font-bold text-[#132529] mb-6">Qualification Details</h3>
+                    <form id="lead-form" class="space-y-5">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="name" class="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">Contact Name</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded text-sm focus:border-[#1F5C40] outline-none">
+                            </div>
+                            <div>
+                                <label for="company" class="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">Company / IPP</label>
+                                <input type="text" id="company" name="company" required class="w-full px-4 py-2 border border-gray-300 rounded text-sm focus:border-[#1F5C40] outline-none">
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="phone" class="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" required class="w-full px-4 py-2 border border-gray-300 rounded text-sm focus:border-[#1F5C40] outline-none">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">Corporate Email</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded text-sm focus:border-[#1F5C40] outline-none">
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="form-capacity" class="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">Plant Capacity (MW)</label>
+                                <input type="number" id="form-capacity" name="capacity_mw" required min="0.1" step="0.1" class="w-full px-4 py-2 border border-gray-300 rounded text-sm focus:border-[#1F5C40] outline-none">
+                            </div>
+                            <div>
+                                <label for="location" class="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">State Operation</label>
+                                <input type="text" id="location" name="location" required class="w-full px-4 py-2 border border-gray-300 rounded text-sm focus:border-[#1F5C40] outline-none">
+                            </div>
+                        </div>
+                        
+                        <button type="submit" id="submit-btn" class="w-full bg-[#132529] text-white py-3 rounded font-bold text-sm tracking-wide mt-4 hover:bg-[#1A3338] transition-colors border border-transparent">
+                            SUBMIT PROJECT DATA
+                        </button>
+                        
+                        <div id="form-success" class="hidden mt-4 text-sm font-semibold text-[#1F5C40] bg-[#EFF4F1] border border-[#D5E3DC] p-3 rounded">
+                            <i class="fa-solid fa-check-circle mr-2"></i> Initial data received. An infrastructural director will contact you.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Footer -->
+    <footer class="bg-[#0B1517] text-gray-400 py-16 border-t border-[#132529]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-6 h-6 bg-[#1F5C40] flex items-center justify-center rounded-sm">
+                            <i class="fa-solid fa-leaf text-white text-[10px]"></i>
+                        </div>
+                        <span class="font-bold text-xl text-white tracking-tight">CARBONBRIDGE</span>
+                    </div>
+                    <p class="text-sm mb-6 max-w-sm">Bridging Indian renewable assets to international voluntary carbon markets through verifiable, institutional-grade data ingestion.</p>
+                    
+                    <div class="space-y-2 text-sm">
+                        <p class="hover:text-white"><i class="fa-regular fa-envelope mr-2"></i> <a href="mailto:jaywardhan.jadeja@gmail.com">jaywardhan.jadeja@gmail.com</a></p>
+                        <p class="hover:text-white"><i class="fa-solid fa-phone mr-2"></i> <a href="tel:+919687080707">+91 96870 80707</a></p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase text-xs tracking-widest">Platform Options</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#platform" class="hover:text-[#2E8B57] transition-colors">Technology Infrastructure</a></li>
+                        <li><a href="#calculator" class="hover:text-[#2E8B57] transition-colors">Valuation Engine</a></li>
+                        <li><a href="https://app.carbonbridge.in/login" class="hover:text-[#2E8B57] transition-colors font-semibold text-white">Client Portal Login ↗</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase text-xs tracking-widest">Regulatory</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="hover:text-[#2E8B57] transition-colors">Data Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-[#2E8B57] transition-colors">Terms of Operations</a></li>
+                        <li><a href="#" class="hover:text-[#2E8B57] transition-colors">Registry Protocols</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-[#132529] pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
+                <p>&copy; 2026 Carbon Bridge. All corporate rights reserved.</p>
+                <div class="flex gap-4">
+                    <span>Indian Renewable Energy Integration</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Sticky CTA -->
+    <div class="sticky-cta px-4 sm:hidden pb-safe">
+        <a href="#apply" class="block w-full bg-brand-slate text-white text-center py-3 rounded font-bold text-sm tracking-wide shadow-lg">
+            CHECK ELIGIBILITY
+        </a>
+    </div>
+
+    <!-- System Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Calculation Engine
+            const capacityInput = document.getElementById('capacity');
+            const formCapacityInput = document.getElementById('form-capacity');
+            const creditsOutput = document.getElementById('calc-credits');
+            const revenueOutput = document.getElementById('calc-revenue');
+            
+            const formatNumber = (num) => new Intl.NumberFormat('en-IN').format(Math.round(num));
+
+            const performCalculation = () => {
+                const mw = parseFloat(capacityInput.value) || 0;
+                if (mw > 0) {
+                    // Institutional metrics: 1 MW = ~1000-1200 VCUs / year. Value range: 4L - 10L INR
+                    const creditsBase = mw * 1100;
+                    const revBase = mw * 550000;
+                    
+                    creditsOutput.innerText = `${formatNumber(creditsBase - (creditsBase*0.1))} - ${formatNumber(creditsBase + (creditsBase*0.1))}`;
+                    revenueOutput.innerText = `${formatNumber(revBase - (revBase*0.2))} - ${formatNumber(revBase + (revBase*0.2))}`;
+                    
+                    if(formCapacityInput) formCapacityInput.value = mw;
+                } else {
+                    creditsOutput.innerText = '0';
+                    revenueOutput.innerText = '0';
+                }
+            };
+
+            if(capacityInput) capacityInput.addEventListener('input', performCalculation);
+
+            // Lead Engine
+            const form = document.getElementById('lead-form');
+            if(form) {
+                const submitBtn = document.getElementById('submit-btn');
+                const successMsg = document.getElementById('form-success');
+
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    
+                    submitBtn.innerText = 'TRANSMITTING...';
+                    submitBtn.style.opacity = '0.7';
+                    submitBtn.disabled = true;
+                    
+                    const formData = new FormData(form);
+                    formData.append("access_key", "3cc33ac5-36a2-4459-817b-53ea8eff64b5");
+                    formData.append("subject", "Corporate Lead: CarbonBridge Registration");
+
+                    try {
+                        const response = await fetch("https://api.web3forms.com/submit", {
+                            method: "POST",
+                            body: formData
+                        });
+
+                        if (response.ok) {
+                            form.style.display = 'none';
+                            successMsg.classList.remove('hidden');
+                        } else {
+                            throw new Error('Transmission Failure');
+                        }
+                    } catch (error) {
+                        console.error(error);
+                        submitBtn.innerText = 'ERROR: RETRY SUBMISSION';
+                        submitBtn.style.opacity = '1';
+                        submitBtn.disabled = false;
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
