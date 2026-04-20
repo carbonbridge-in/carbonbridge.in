@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# temp debug scripts
+check_db.mjs
+check_hash.mjs
+fix_password.mjs

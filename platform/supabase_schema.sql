@@ -174,14 +174,15 @@ CREATE POLICY "service_role_all" ON documents       FOR ALL TO service_role USIN
 
 -- ── Seed default ADMIN ──────────────────────────────────
 -- Password: CarbonBridge@2024! (bcrypt hash)
+-- Password: CarbonBridge@2024! (bcrypt hash — regenerated and verified)
 INSERT INTO users (email, password_hash, name, role, is_temp_password)
 VALUES (
   'admin@carbonbridge.in',
-  '$2a$12$LQv3c1yqBWVHxkd0LHAkCOYz6TiGniMO6YXIegEq1bJWiJPqnMvim',
+  '$2b$12$ohk6L.n.x8/TH5AjxOkio.EMQ6Zr3Qo5uxpqJoNX8xGN.HVN5gZi6',
   'CarbonBridge Admin',
   'ADMIN',
   FALSE
-) ON CONFLICT (email) DO NOTHING;
+) ON CONFLICT (email) DO UPDATE SET password_hash = EXCLUDED.password_hash;
 
 -- ── Updated_at trigger ────────────────────────────────────
 CREATE OR REPLACE FUNCTION update_updated_at()
